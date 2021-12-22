@@ -64,12 +64,12 @@
     "workbox-webpack-plugin": "^6.4.1"
   },
   "scripts": {
-    "start": "npm run lint && npm run format && node scripts/start.js",
+    "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "format": "prettier --write \"**/*.{tsx,ts,js,css}\"",
     "prepare" : "husky install",
-    "lint": "eslint src/**/*.js src/**/*.jsx src/**/*.tsx src/**/*.ts"
+    "lint": "eslint --ext .ts,.tsx ./src"
   },
   "eslintConfig": {
     "extends": [
