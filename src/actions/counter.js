@@ -1,11 +1,13 @@
+import actionTypes from "./actionTypes";
+
 export const add = () => {
     return {
-        type: 'ADD'
+        type: actionTypes.ADD
     }
 }
 
 export const sub = () => {
     return {
-        type: 'SUB'
+        type: actionTypes.SUB
     }
 }
