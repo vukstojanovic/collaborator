@@ -1,10 +1,11 @@
+import { Action } from "redux";
 import actionTypes from "../actions/actionTypes";
 
 const initialState = {
     countSum : 0
 }
 
-const counterReducer = (state = initialState, action) => {
+const counterReducer = (state = initialState, action: Action) => {
     switch (action.type) {
         case actionTypes.ADD:
             state.countSum++;

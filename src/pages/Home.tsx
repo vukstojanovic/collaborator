@@ -1,10 +1,11 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { add, sub } from '../actions/counter';
+import { add, sub } from '../redux/actions/counter';
+import { RootState } from '../redux/reducers';
 
 function Home() {
     const dispatch = useDispatch();
-  const counter = useSelector((state) => state.count.countSum);
+  const counter = useSelector((state: RootState) => state.count.countSum);
   console.log(counter);
     return (
         <div>
