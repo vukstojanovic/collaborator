@@ -9,7 +9,7 @@ function Home() {
     console.log(counter);
     return (
         <div>
-            <p>
+            <p className="Description">
                 This game is not meant to be played sober
             </p>
             <button onClick={() => dispatch(sub())}>-1</button>
