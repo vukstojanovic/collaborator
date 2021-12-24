@@ -9,6 +9,9 @@ function Home() {
     console.log(counter);
     return (
         <div>
+            <p>
+                This game is not meant to be played sober
+            </p>
             <button onClick={() => dispatch(sub())}>-1</button>
             <div>{counter}</div>
             <button onClick={() => dispatch(add())}>+1</button>
