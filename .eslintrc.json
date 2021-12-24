@@ -23,7 +23,6 @@
     "rules": {
         "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/no-var-requires": 0,
-        "quotes": [0, "single"],
         // suppress errors for missing 'import React' in files, React import is not needed since v17
         "react/react-in-jsx-scope": "off"
     }
