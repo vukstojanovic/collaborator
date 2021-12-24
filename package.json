@@ -25,7 +25,6 @@
         "css-minimizer-webpack-plugin": "^3.2.0",
         "dotenv": "^10.0.0",
         "dotenv-expand": "^5.1.0",
-        "eslint": "^8.3.0",
         "eslint-config-react-app": "^7.0.0",
         "eslint-webpack-plugin": "^3.1.1",
         "file-loader": "^6.2.0",
@@ -35,7 +34,6 @@
         "jest": "^27.4.3",
         "jest-resolve": "^27.4.2",
         "jest-watch-typeahead": "^1.0.0",
-        "lint-staged": "^12.1.4",
         "mini-css-extract-plugin": "^2.4.5",
         "npm-run-all": "^4.1.5",
         "postcss": "^8.4.4",
@@ -43,7 +41,6 @@
         "postcss-loader": "^6.2.1",
         "postcss-normalize": "^10.0.1",
         "postcss-preset-env": "^7.0.1",
-        "prettier": "^2.5.1",
         "prompts": "^2.4.2",
         "react": "^17.0.2",
         "react-app-polyfill": "^3.0.0",
@@ -75,7 +72,8 @@
         "test": "node scripts/test.js",
         "format": "prettier --write \"**/*.{tsx,ts,js,css}\"",
         "prepare": "husky install",
-        "lint": "eslint --ext .ts,.tsx ./src"
+        "lint": "eslint --ext .ts,.tsx ./src",
+        "validate": "npm-run-all lint-staged"
     },
     "eslintConfig": {
         "extends": [
@@ -152,7 +150,10 @@
         ]
     },
     "devDependencies": {
-        "husky": "^7.0.4"
+        "eslint": "^8.5.0",
+        "husky": "^7.0.4",
+        "lint-staged": "^12.1.4",
+        "prettier": "^2.5.1"
     },
     "lint-staged": {
         "*.+(ts|tsx)": [
