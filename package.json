@@ -75,9 +75,7 @@
         "test": "node scripts/test.js",
         "format": "prettier --write \"**/*.{tsx,ts,js,css}\"",
         "prepare": "husky install",
-        "lint": "eslint --ext .ts,.tsx ./src",
-        "validate": "npm-run-all --parallel check-types && lint-staged",
-        "check-types": "tsc --project tsconfig.json --pretty --noEmit"
+        "lint": "eslint --ext .ts,.tsx ./src"
     },
     "eslintConfig": {
         "extends": [
@@ -158,8 +156,8 @@
     },
     "lint-staged": {
         "*.+(ts|tsx)": [
-            "format",
-            "lint"
+            "npm run format",
+            "npm run lint"
         ]
     }
 }
