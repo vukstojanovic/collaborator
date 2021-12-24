@@ -1,9 +1,9 @@
-import { Action } from "redux";
-import actionTypes from "../actions/actionTypes";
+import { Action } from 'redux';
+import actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    countSum : 0
-}
+    countSum: 0,
+};
 
 const counterReducer = (state = initialState, action: Action) => {
     switch (action.type) {
@@ -16,6 +16,6 @@ const counterReducer = (state = initialState, action: Action) => {
         default:
             return state;
     }
-}
+};
 
 export default counterReducer;

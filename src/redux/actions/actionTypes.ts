@@ -1,6 +1,6 @@
-const actionTypes ={
-    ADD:'ADD',
-    SUB:'SUB'
-}
+const actionTypes = {
+    ADD: 'ADD',
+    SUB: 'SUB',
+};
 
-export default actionTypes
+export default actionTypes;
