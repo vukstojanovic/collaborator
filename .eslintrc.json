@@ -26,10 +26,5 @@
         "quotes": [0, "single"],
         // suppress errors for missing 'import React' in files, React import is not needed since v17
         "react/react-in-jsx-scope": "off"
-    },
-    "settings": {
-        "react": {
-          "version": "999"
-        }
     }
 }
