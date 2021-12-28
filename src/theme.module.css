@@ -1,0 +1,40 @@
+:root {
+
+    /* Colors */
+
+    --background-color: #7E879E;
+    --page-background-color: #525F7F;
+    --dark-background-color: #27293D;
+    --border-color: #1D8CF8;
+    --text-primary-color: #ffffff;
+    --text-secondary-color: #1D8CF8;
+    --text-dark-color: #7E879E;
+    --gray-color: #353750;
+
+    /* Profile page */
+
+    --pink-color: #E14ECA;
+    --succses-color: #00F2C3;
+    --green-color: #00F2C3;
+
+    /* Modal */
+
+    --alarm-color: #FC030F;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 12px;
+    color: var(--text-color);
+}
+
+h1 {
+    font-size: 32px;
+}
+
+
+
+
+
