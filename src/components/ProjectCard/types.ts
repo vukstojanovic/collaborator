@@ -1,5 +1,11 @@
+export enum ProjectStatus {
+    active = 'active',
+    cancelled = 'cancelled',
+    inactive = 'inactive',
+}
+
 export type Props = {
-    status: 'active' | 'cancelled' | 'inactive';
+    status: ProjectStatus;
     client: string;
     lead: string;
     manager: string;

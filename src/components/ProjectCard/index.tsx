@@ -11,15 +11,15 @@ function ProjectCard({
     startDate,
     endDate,
 }: Props) {
-    let statusClass = null;
+    const statusClass = styles[status];
 
-    if (status === 'active') {
-        statusClass = styles.active;
-    } else if (status === 'inactive') {
-        statusClass = styles.inactive;
-    } else if (status === 'cancelled') {
-        statusClass = styles.cancelled;
-    }
+    // if (status === 'active') {
+    //     statusClass = styles.active;
+    // } else if (status === 'inactive') {
+    //     statusClass = styles.inactive;
+    // } else if (status === 'cancelled') {
+    //     statusClass = styles.cancelled;
+    // }
 
     return (
         <div className={styles.wrapper}>

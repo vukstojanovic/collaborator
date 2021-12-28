@@ -1,11 +1,12 @@
 import React from 'react';
 import ProjectCard from '../components/ProjectCard';
+import { ProjectStatus } from '../components/ProjectCard/types';
 
 function TetstBB() {
     return (
         <div>
             <ProjectCard
-                status={'inactive'}
+                status={ProjectStatus.inactive}
                 client={'Colaborator'}
                 lead={'Kim Novak'}
                 manager={'Kim Novak'}
