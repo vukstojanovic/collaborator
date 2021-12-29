@@ -1,26 +1,13 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@import url('../../theme.module.css');
+@import url('../../index.css');
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-        monospace;
-}
 header {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-        'Helvetica Neue', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
-    width: 1400px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 19px 30px 11px 30px;
-    background-color: #27293d;
+    background-color: var(--text-secondary-color);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin: 0 auto;
 }
@@ -37,15 +24,15 @@ header {
     font-style: italic;
     line-height: 37.5px;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--text-primary-color);
 }
 .circleDiv {
     width: 52px;
     height: 52px;
-    background-color: #7e879e;
+    background-color: var(--text-dark-color);
     border-radius: 25px;
 }
 .faCaretDown {
     font-size: 28px;
-    color: #fff;
+    color: var(--text-primary-color);
 }
