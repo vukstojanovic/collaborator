@@ -1,7 +1,9 @@
+@import url('../../theme.module.css');
+
 .main-div {
-    width: 1100px;
-    height: 740px;
-    background-color: #27293d;
+    width: 90%;
+    height: 80%;
+    background-color: var(--dark-background-color);
     padding: 50px;
     color: white;
     display: flex;
@@ -14,14 +16,16 @@
     height: 600px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 20px;
 }
 
-.border-bottom {
-    border-bottom: 1px solid #1d8cf8;
+.input {
+    border: 1px solid var(--dark-background-color);
+    border-bottom: 1px solid var(--border-color);
     width: 320px;
     height: 24px;
+    background-color: var(--dark-background-color);
 }
 
 .profile-img-skills {
@@ -35,16 +39,16 @@
 .img-wrapper {
     width: 280px;
     height: 250px;
-    border: 1px solid #1d8cf8;
+    border: 1px solid var(--border-color);
     align-self: flex-end;
-    background-color: #c4c4c4;
+    background-color: white;
     border-radius: 10px;
 }
 
 .skills-wrapper {
     width: 540px;
     height: 240px;
-    border: 1px solid #1d8cf8;
+    border: 1px solid var(--border-color);
     border-radius: 10px;
     padding: 30px;
     align-self: flex-end;
@@ -53,7 +57,7 @@
 .add-role-btn {
     width: 45px;
     height: 40px;
-    background-color: #00f2c3;
+    background-color: var(--green-color);
     font-size: 24px;
     border-radius: 10px;
     color: white;
@@ -64,4 +68,9 @@
     justify-content: space-between;
     align-items: center;
     font-size: 18px;
+}
+
+.label-input-wrapper {
+    display: flex;
+    flex-direction: column;
 }

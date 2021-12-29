@@ -4,25 +4,25 @@ function Profile() {
     return (
         <div className={styles['main-div']}>
             <div className={styles['profile-data']}>
-                <div>
+                <div className={styles['label-input-wrapper']}>
                     <label>First name:</label>
-                    <p className={styles['border-bottom']}></p>
+                    <input className={styles['input']}></input>
                 </div>
-                <div>
+                <div className={styles['label-input-wrapper']}>
                     <label>Last name:</label>
-                    <p className={styles['border-bottom']}></p>
+                    <input className={styles['input']}></input>
                 </div>
-                <div>
+                <div className={styles['label-input-wrapper']}>
                     <label>Address:</label>
-                    <p className={styles['border-bottom']}></p>
+                    <input className={styles['input']}></input>
                 </div>
-                <div>
+                <div className={styles['label-input-wrapper']}>
                     <label>Email:</label>
-                    <p className={styles['border-bottom']}></p>
+                    <input className={styles['input']}></input>
                 </div>
-                <div>
+                <div className={styles['label-input-wrapper']}>
                     <label>Contact number:</label>
-                    <p className={styles['border-bottom']}></p>
+                    <input className={styles['input']}></input>
                 </div>
             </div>
             <div className={styles['profile-img-skills']}>
