@@ -1,6 +1,9 @@
 import styles from './Profile.module.css';
+import AddNewSkill from '../modals/AddNewSkill';
+import { useState } from 'react';
 
 function Profile() {
+    const [modal, setModal] = useState(false);
     return (
         <div className={styles['main-div']}>
             <div className={styles['profile-data']}>
@@ -30,10 +33,16 @@ function Profile() {
                 <div className={styles['skills-wrapper']}>
                     <div className={styles['label-add-role-btn-wrapper']}>
                         <label>Skills:</label>
-                        <button className={styles['add-role-btn']}>+</button>
+                        <button
+                            onClick={() => setModal(!modal)}
+                            className={styles['add-role-btn']}
+                        >
+                            +
+                        </button>
                     </div>
                 </div>
             </div>
+            <div>{modal ? <AddNewSkill /> : null}</div>
         </div>
     );
 }
