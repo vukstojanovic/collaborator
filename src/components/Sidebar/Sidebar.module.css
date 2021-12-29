@@ -1,18 +1,13 @@
+@import '../../theme.module.css';
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-:root {
-    --main-bg: #27293d;
-    --white: #fff;
-    --grey: #7e879e;
-    --blue: #1d8cf8;
-}
-
 .sidebar {
-    background-color: var(--main-bg);
+    background-color: var(--dark-background-color);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -21,7 +16,7 @@
 }
 
 .sidebar-img {
-    background-color: var(--grey);
+    background-color: var(--text-dark-color);
     width: 148px;
     height: 148px;
     border-radius: 50%;
@@ -36,7 +31,7 @@
 }
 
 .fullname {
-    color: var(--blue);
+    color: var(--text-secondary-color);
     text-transform: uppercase;
     font-weight: bold;
     font-size: 20px;
@@ -54,7 +49,7 @@
 }
 
 .sidebar-fields li {
-    border: 1px solid var(--blue);
+    border: 1px solid var(--text-secondary-color);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -70,7 +65,7 @@
 }
 
 .unavailable {
-    color: var(--grey);
+    color: var(--text-dark-color);
 }
 
 .icon {
