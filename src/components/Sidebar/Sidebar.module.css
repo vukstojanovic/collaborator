@@ -1,28 +1,17 @@
-<<<<<<< HEAD
-=======
 @import '../../theme.module.css';
 
->>>>>>> development
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-<<<<<<< HEAD
-:root {
-    --main-bg: #27293d;
-    --white: #fff;
-    --grey: #7e879e;
-    --blue: #1d8cf8;
+.sidebar {
+    background-color: var(--main-bg);
 }
 
 .sidebar {
-    background-color: var(--main-bg);
-=======
-.sidebar {
     background-color: var(--dark-background-color);
->>>>>>> development
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -31,11 +20,7 @@
 }
 
 .sidebar-img {
-<<<<<<< HEAD
-    background-color: var(--grey);
-=======
     background-color: var(--text-dark-color);
->>>>>>> development
     width: 148px;
     height: 148px;
     border-radius: 50%;
@@ -50,11 +35,7 @@
 }
 
 .fullname {
-<<<<<<< HEAD
-    color: var(--blue);
-=======
     color: var(--text-secondary-color);
->>>>>>> development
     text-transform: uppercase;
     font-weight: bold;
     font-size: 20px;
@@ -88,11 +69,7 @@
 }
 
 .unavailable {
-<<<<<<< HEAD
-    color: var(--grey);
-=======
     color: var(--text-dark-color);
->>>>>>> development
 }
 
 .icon {
