@@ -1,8 +1,9 @@
 import React from 'react';
 import ProjectCard from '../components/ProjectCard';
+import Timesheet from '../components/Timesheet';
 import { ProjectStatus } from '../components/ProjectCard/types';
 
-function TetstBB() {
+function TestBB() {
     return (
         <div>
             <ProjectCard
@@ -14,8 +15,9 @@ function TetstBB() {
                 startDate={'01-01-2021'}
                 endDate={'N/A'}
             />
+            <Timesheet />
         </div>
     );
 }
 
-export default TetstBB;
+export default TestBB;
