@@ -4,6 +4,7 @@ function TestSS() {
     return (
         <div>
             <Profile />
+            <div>test husky</div>
         </div>
     );
 }
