@@ -9,6 +9,7 @@ function Layout({ children }: LayoutProps) {
             <Header />
             <Sidebar />
             {children}
+            <div className="div"></div>
         </div>
     );
 }
