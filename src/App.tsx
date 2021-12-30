@@ -8,10 +8,12 @@ import TestSS from './pages/TestSS';
 import TestVS from './pages/TestVS';
 import TestSM from './pages/TestSM';
 import Header from './components/Header/Header';
+import Sidebar from './components/Sidebar';
 
 function App() {
     return (
         <BrowserRouter>
+            <Sidebar />
             <Routes>
                 <Route path="/header" element={<Header />} />
                 <Route path="/" element={<Home />} />
