@@ -4,8 +4,6 @@ function TestSS() {
     return (
         <div>
             <Profile />
-
-            <div>test husky 8</div>
         </div>
     );
 }
