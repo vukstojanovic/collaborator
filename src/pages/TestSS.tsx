@@ -5,7 +5,6 @@ function TestSS() {
         <div>
             <Profile />
             <div>test husky</div>
-            <div> test 2 husky</div>
         </div>
     );
 }
