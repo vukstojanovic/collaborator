@@ -16,24 +16,30 @@ export default function Login(): React.ReactElement {
     return (
         <div className={styles['Login']}>
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className={styles['label-input-wrapper']}>
                     <label>Email</label>
                     <input
+                        className={styles['input']}
                         autoFocus
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
-                <div>
+                <div className={styles['label-input-wrapper']}>
                     <label>Password</label>
                     <input
+                        className={styles['input']}
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-                <button type="submit" disabled={!validateForm()}>
+                <button
+                    className={styles['submit']}
+                    type="submit"
+                    disabled={!validateForm()}
+                >
                     Login
                 </button>
             </form>

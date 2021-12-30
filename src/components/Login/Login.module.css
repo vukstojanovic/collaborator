@@ -1,10 +1,43 @@
-@media all and (min-width: 480px) {
-    .Login {
-        padding: 60px 0;
-    }
+@import url('../../theme.module.css');
 
-    .Login form {
-        margin: 0 auto;
-        max-width: 320px;
-    }
+.Login {
+    width: 90%;
+    height: 80%;
+    background-color: var(--dark-background-color);
+    padding: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Login form {
+    margin: 0 auto;
+    max-width: 60%;
+}
+
+.label-input-wrapper {
+    padding-bottom: 4%;
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    border: 1px solid var(--dark-background-color);
+    border-bottom: 1px solid var(--border-color);
+    width: 320px;
+    height: 24px;
+    background-color: var(--dark-background-color);
+    display: flex;
+}
+
+.submit {
+    width: 30%;
+    background-color: var(--border-color);
+    font-size: 16px;
+    border-radius: 10px;
+    color: var(--text-primary-color);
+}
+
+.submit:hover {
+    background-color: var(--blue-hover-color);
 }
