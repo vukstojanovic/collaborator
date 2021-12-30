@@ -164,9 +164,9 @@
     "typescript-plugin-css-modules": "^3.4.0"
   },
   "lint-staged": {
-    "*.+(ts|tsx)": [
-      "npm run format",
-      "npm run lint"
-    ]
+    "*.{ts,tsx}": [
+      "eslint --cache --ext .ts,.tsx --fix --quiet"
+  ],
+  "*.{ts,tsx,md,js,yml,scss}": "prettier --write"
   }
 }
