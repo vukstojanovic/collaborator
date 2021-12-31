@@ -7,12 +7,10 @@ function Layout({ children }: LayoutProps) {
     return (
         <div className={styles['layout-container']}>
             <Header />
-            <main>
+            <div className={styles['content-container']}>
                 <Sidebar />
-                <article className={styles['article-container']}>
-                    {children}
-                </article>
-            </main>
+                <main>{children}</main>
+            </div>
         </div>
     );
 }

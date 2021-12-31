@@ -5,20 +5,20 @@
     /* background-color: #525f7f; */
 }
 
-main {
+.content-container {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
 
-main .article-container {
+main {
     height: 100%;
     overflow: hidden;
     /* padding: 10px; */
 }
 
 @media only screen and (min-width: 400px) {
-    main {
+    .content-container {
         flex-direction: row;
         flex: 1;
     }
