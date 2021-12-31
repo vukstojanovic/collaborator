@@ -13,7 +13,7 @@ main {
 
 main .article-container {
     height: 100%;
-    overflow:hidden;
+    overflow: hidden;
     /* padding: 10px; */
 }
 
