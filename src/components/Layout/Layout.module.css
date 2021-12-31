@@ -11,7 +11,7 @@
     height: 100%;
 }
 
-main {
+.main-content {
     height: 100%;
     overflow: hidden;
     /* padding: 10px; */

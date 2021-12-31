@@ -9,7 +9,7 @@ function Layout({ children }: LayoutProps) {
             <Header />
             <div className={styles['content-container']}>
                 <Sidebar />
-                <main>{children}</main>
+                <main className={styles['main-content']}>{children}</main>
             </div>
         </div>
     );
