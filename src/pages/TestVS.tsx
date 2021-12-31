@@ -17,14 +17,15 @@ function TestVS() {
             <h1>try</h1>
             <h1>try</h1>
             <h1>tyukyuil</h1>
-            {/* <ProjectCard 
+            {/* <ProjectCard
                 status={ProjectStatus.inactive}
                 client={'Colaborator'}
                 lead={'Kim Novak'}
                 manager={'Kim Novak'}
                 teamType={'Frontend'}
                 startDate={'01-01-2021'}
-                endDate={'N/A'} />
+                endDate={'N/A'}
+            />
             <Profile /> */}
         </Layout>
     );
