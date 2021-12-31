@@ -6,7 +6,7 @@ export default function Login(): React.ReactElement {
     const [password, setPassword] = useState<string | undefined>();
 
     function validateForm() {
-        return email && email.length > 0 && password && password.length > 0;
+        return email && password;
     }
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -14,7 +14,7 @@ export default function Login(): React.ReactElement {
     }
 
     return (
-        <div className={styles['Login']}>
+        <div className={styles['login']}>
             <form onSubmit={handleSubmit}>
                 <div className={styles['label-input-wrapper']}>
                     <label>Email</label>

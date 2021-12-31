@@ -1,6 +1,4 @@
-@import url('../../theme.module.css');
-
-.Login {
+.login {
     width: 90%;
     height: 80%;
     background-color: var(--dark-background-color);
@@ -10,13 +8,13 @@
     justify-content: space-between;
 }
 
-.Login form {
+.login form {
     margin: 0 auto;
     max-width: 60%;
 }
 
 .label-input-wrapper {
-    padding-bottom: 4%;
+    padding-bottom: 18px;
     display: flex;
     flex-direction: column;
 }
@@ -36,6 +34,7 @@
     font-size: 16px;
     border-radius: 10px;
     color: var(--text-primary-color);
+    cursor: pointer;
 }
 
 .submit:hover {

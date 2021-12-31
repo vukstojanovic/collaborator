@@ -1,7 +1,7 @@
 import Login from '../components/Login';
 
-function TestMB() {
+function LoginPage() {
     return <Login />;
 }
 
-export default TestMB;
+export default LoginPage;
