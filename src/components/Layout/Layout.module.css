@@ -1,0 +1,25 @@
+.layout-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* background-color: #525f7f; */
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+main .article-container {
+    height: 100%;
+    overflow: hidden;
+    /* padding: 10px; */
+}
+
+@media only screen and (min-width: 400px) {
+    main {
+        flex-direction: row;
+        flex: 1;
+    }
+}
