@@ -8,6 +8,7 @@ import TestSS from './pages/TestSS';
 import TestVS from './pages/TestVS';
 import TestSM from './pages/TestSM';
 import Header from './components/Header/Header';
+import Timesheet from './pages/Timesheet';
 import LoginPage from './pages/LoginPage';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
                 <Route path="/testvs" element={<TestVS />} />
                 <Route path="/testbb" element={<TestBB />} />
                 <Route path="/testss" element={<TestSS />} />
+                <Route path="/timesheet" element={<Timesheet />} />
                 <Route path="/login" element={<LoginPage />} />
             </Routes>
         </BrowserRouter>
