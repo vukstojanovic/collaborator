@@ -2,7 +2,6 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    /* background-color: #525f7f; */
 }
 
 .content-container {
@@ -14,7 +13,6 @@
 .main-content {
     height: 100%;
     overflow: hidden;
-    /* padding: 10px; */
 }
 
 @media only screen and (min-width: 400px) {

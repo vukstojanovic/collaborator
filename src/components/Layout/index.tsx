@@ -1,9 +1,9 @@
 import Header from '../Header/Header';
 import Sidebar from '../Sidebar/index';
-import { LayoutProps } from '../Layout/types';
 import styles from './Layout.module.css';
+import { PropsWithChildren } from 'react';
 
-function Layout({ children }: LayoutProps) {
+function Layout({ children }: PropsWithChildren<unknown>) {
     return (
         <div className={styles['layout-container']}>
             <Header />
