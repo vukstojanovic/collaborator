@@ -7,6 +7,10 @@
 }
 
 .sidebar {
+    background-color: var(--main-bg);
+}
+
+.sidebar {
     background-color: var(--dark-background-color);
     width: 100%;
     display: flex;
