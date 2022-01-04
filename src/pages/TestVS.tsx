@@ -1,8 +1,9 @@
-import Layout from '../components/Layout';
-import ProjectCard from '../components/ProjectCard';
-import { ProjectStatus } from '../components/ProjectCard/types';
-import Profile from '../components/Profile';
-import Modal from '../components/modals/AddNewSkill/index';
+import Sidebar from '@components/Sidebar';
+import Layout from '@components/Layout';
+import ProjectCard from '@components/ProjectCard';
+import { ProjectStatus } from '@components/ProjectCard/types';
+import Profile from '@components/Profile';
+import Modal from '@components/modals/AddNewSkill/index';
 
 function TestVS() {
     return (

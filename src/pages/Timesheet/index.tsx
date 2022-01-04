@@ -1,5 +1,5 @@
 import React from 'react';
-import Calendar from '../../components/Timesheet';
+import Calendar from '@components/Timesheet';
 import styles from './Timesheet.module.css';
 
 const month = new Date().toLocaleString('default', { month: 'long' });

@@ -1,8 +1,12 @@
 import React, { useEffect, useState, ChangeEvent } from 'react';
 import { datesGenerator } from 'dates-generator';
-import { ICalendar, IGeneratedDate, TimesheetDate } from './types';
+import {
+    ICalendar,
+    IGeneratedDate,
+    TimesheetDate,
+} from '@components/Timesheet/types';
 import styles from './Timesheet.module.css';
-import { days } from './data';
+import { days } from '@components/Timesheet/data';
 
 const Timesheet = () => {
     //Default selected date is present day
