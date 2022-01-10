@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 
 function ProjectsPage() {
     const filterButtons = [
-        'fixed price',
+        'fixed-price',
         'dedicated',
         'active',
         'inactive',
@@ -67,7 +67,7 @@ function ProjectsPage() {
     return (
         <section className={styles['projects-page']}>
             <div className={styles['filter-area']}>
-                <h1>{t('Projects')}</h1>
+                <h1>{t('description.projects')}</h1>
                 <div className={styles['input-container']}>
                     <input
                         type="text"
@@ -88,7 +88,7 @@ function ProjectsPage() {
                                 className={styles['filter-btn']}
                                 onClick={() => selectBtn(btn)}
                             >
-                                {t(btn)}
+                                {t(`description.${btn}`)}
                             </div>
                         );
                     })}
@@ -99,7 +99,7 @@ function ProjectsPage() {
                         .map((btn) => {
                             return (
                                 <div key={btn} className={styles['adjust-btn']}>
-                                    {t(btn)}{' '}
+                                    {t(`description.${btn}`)}{' '}
                                     <span onClick={() => unselectBtn(btn)}>
                                         X
                                     </span>
