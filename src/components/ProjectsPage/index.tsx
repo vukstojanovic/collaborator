@@ -1,132 +1,155 @@
 import ProjectCard from '@components/ProjectCard';
-import { ProjectStatus } from '@components/ProjectCard/types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import styles from './ProjectsPage.module.css';
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { projectList } from './ProjectsPageData';
+import { useTranslation } from 'react-i18next';
 
 function ProjectsPage() {
-    const [projectList, setProjectList] = useState([
-        {
-            status: 'active',
-            client: 'Some guy',
-            lead: 'Kim Novak',
-            manager: 'Milos Ilic',
-            teamType: 'Dedicated',
-            startDate: '01-01-2021',
-            endDate: 'N/A',
-        },
-        {
-            status: 'cancelled',
-            client: 'Batman',
-            lead: 'Milos Ilic',
-            manager: 'Milos Ilic',
-            teamType: 'Backend',
-            startDate: '04-01-2021',
-            endDate: '14-01-2021',
-        },
-        {
-            status: 'inactive',
-            client: 'Ash Williams',
-            lead: 'Vuk Stojanovic',
-            manager: 'Kim Novak',
-            teamType: 'Frontend',
-            startDate: '08-01-2021',
-            endDate: '16-01-2021',
-        },
-    ]);
+    const filterButtons = [
+        'fixed price',
+        'dedicated',
+        'active',
+        'inactive',
+        'cancelled',
+    ];
+
+    const [searchParams, setSearchParams] = useSearchParams({});
+    const [inputValue, setInputValue] = useState(
+        searchParams.get('search') || ''
+    );
+    const { t } = useTranslation();
+
+    function handleSearch() {
+        if (inputValue.length) {
+            searchParams.set('search', inputValue);
+            setSearchParams(searchParams);
+        } else {
+            searchParams.delete('search');
+            setSearchParams(searchParams);
+        }
+    }
+
+    function filterSearchByInput(x: string) {
+        if (!searchParams.get('search')) {
+            return true;
+        }
+        return x
+            .toLowerCase()
+            .includes(String(searchParams.get('search')).toLowerCase());
+    }
+
+    function filterSearchByButton(x: string) {
+        return searchParams.has(x.toLowerCase());
+    }
+
+    function selectBtn(btn: string) {
+        searchParams.set(String([btn]), btn);
+        setSearchParams(searchParams);
+    }
+
+    function unselectBtn(btn: string) {
+        searchParams.delete(String([btn]));
+        setSearchParams(searchParams);
+    }
+
+    function countButtonFilters() {
+        const filters: string[] = [];
+        const keys = searchParams.keys();
+        for (const key of keys) {
+            key !== 'search' ? filters.push(key) : null;
+        }
+        return filters.length;
+    }
 
     return (
         <section className={styles['projects-page']}>
             <div className={styles['filter-area']}>
-                <h1>Projects</h1>
+                <h1>{t('Projects')}</h1>
                 <div className={styles['input-container']}>
-                    <input type="text" />
+                    <input
+                        type="text"
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                    />
                     <FontAwesomeIcon
                         className={styles['fa-search-icon']}
                         icon={faSearch}
+                        onClick={handleSearch}
                     />
                 </div>
                 <div className={styles['filter-btns']}>
-                    <div className={styles['filter-btn']}>Fixed Price</div>
-                    <div className={styles['filter-btn']}>Dedicated</div>
-                    <div className={styles['filter-btn']}>In Progress</div>
-                    <div className={styles['filter-btn']}>Finished</div>
-                    <div className={styles['filter-btn']}>Cancelled</div>
+                    {filterButtons.map((btn) => {
+                        return (
+                            <div
+                                key={btn}
+                                className={styles['filter-btn']}
+                                onClick={() => selectBtn(btn)}
+                            >
+                                {t(btn)}
+                            </div>
+                        );
+                    })}
                 </div>
                 <div className={styles['adjusted-search']}>
-                    <div className={styles['adjust-btn']}>
-                        Fixed Price <span>X</span>
-                    </div>
+                    {filterButtons
+                        .filter((item) => searchParams.get(item))
+                        .map((btn) => {
+                            return (
+                                <div key={btn} className={styles['adjust-btn']}>
+                                    {t(btn)}{' '}
+                                    <span onClick={() => unselectBtn(btn)}>
+                                        X
+                                    </span>
+                                </div>
+                            );
+                        })}
                 </div>
             </div>
             <div className={styles['projects']}>
-                <div className={styles['project-card-container']}>
-                    <ProjectCard
-                        status={ProjectStatus.active}
-                        client={'Colaborator'}
-                        lead={'Kim Novak'}
-                        manager={'Kim Novak'}
-                        teamType={'Frontend'}
-                        startDate={'01-01-2021'}
-                        endDate={'N/A'}
-                    />
-                </div>
-                <div className={styles['project-card-container']}>
-                    <ProjectCard
-                        status={ProjectStatus.inactive}
-                        client={'Colaborator'}
-                        lead={'Milos Ilic'}
-                        manager={'Milos Ilic'}
-                        teamType={'Backend'}
-                        startDate={'01-01-2021'}
-                        endDate={'N/A'}
-                    />
-                </div>
-                <div className={styles['project-card-container']}>
-                    <ProjectCard
-                        status={ProjectStatus.inactive}
-                        client={'Colaborator'}
-                        lead={'Kim Novak'}
-                        manager={'Kim Novak'}
-                        teamType={'Frontend'}
-                        startDate={'01-01-2021'}
-                        endDate={'N/A'}
-                    />
-                </div>
-                <div className={styles['project-card-container']}>
-                    <ProjectCard
-                        status={ProjectStatus.cancelled}
-                        client={'Colaborator'}
-                        lead={'Aleksandar Stojanovic'}
-                        manager={'Aleksandar Stojanovic'}
-                        teamType={'Mobile'}
-                        startDate={'01-01-2021'}
-                        endDate={'N/A'}
-                    />
-                </div>
-                <div className={styles['project-card-container']}>
-                    <ProjectCard
-                        status={ProjectStatus.inactive}
-                        client={'Colaborator'}
-                        lead={'Kim Novak'}
-                        manager={'Kim Novak'}
-                        teamType={'Frontend'}
-                        startDate={'01-01-2021'}
-                        endDate={'N/A'}
-                    />
-                </div>
-                <div className={styles['project-card-container']}>
-                    <ProjectCard
-                        status={ProjectStatus.inactive}
-                        client={'Colaborator'}
-                        lead={'Kim Novak'}
-                        manager={'Kim Novak'}
-                        teamType={'Frontend'}
-                        startDate={'01-01-2021'}
-                        endDate={'N/A'}
-                    />
-                </div>
+                {projectList
+                    .filter((item) => {
+                        const {
+                            status,
+                            client,
+                            lead,
+                            manager,
+                            teamType,
+                            startDate,
+                            endDate,
+                        } = item;
+                        return (
+                            filterSearchByInput(status) ||
+                            filterSearchByInput(client) ||
+                            filterSearchByInput(lead) ||
+                            filterSearchByInput(manager) ||
+                            filterSearchByInput(teamType) ||
+                            filterSearchByInput(startDate) ||
+                            filterSearchByInput(endDate)
+                        );
+                    })
+                    .filter((item) => {
+                        const { status, teamType } = item;
+                        if (countButtonFilters() === 0) {
+                            return true;
+                        }
+                        return (
+                            filterSearchByButton(status) ||
+                            filterSearchByButton(teamType)
+                        );
+                    })
+                    .map((item) => {
+                        return (
+                            <div
+                                className={styles['project-card-container']}
+                                key={item.id}
+                            >
+                                <ProjectCard {...item} />
+                            </div>
+                        );
+                    })}
             </div>
         </section>
     );
