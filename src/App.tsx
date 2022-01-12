@@ -17,6 +17,7 @@ import NotFoundPage from '@pages/NotFoundPage';
 import AdminOverview from '@pages/AdminOverview';
 import People from '@pages/People';
 import Profile from '@pages/Profile';
+import Projects from '@pages/Projects';
 
 function App() {
     return (
@@ -93,6 +94,14 @@ function App() {
                         element={
                             <ProtectedRoute>
                                 <Profile />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/projects"
+                        element={
+                            <ProtectedRoute>
+                                <Projects />
                             </ProtectedRoute>
                         }
                     />

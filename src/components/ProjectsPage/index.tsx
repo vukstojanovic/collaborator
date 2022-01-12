@@ -2,33 +2,36 @@ import ProjectCard from '@components/ProjectCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import styles from './ProjectsPage.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { projectList } from './ProjectsPageData';
 import { useTranslation } from 'react-i18next';
+import { filterButtons } from '@constants/projects';
 
 function ProjectsPage() {
-    const filterButtons = [
-        'fixed-price',
-        'dedicated',
-        'active',
-        'inactive',
-        'cancelled',
-    ];
-
     const [searchParams, setSearchParams] = useSearchParams({});
     const [inputValue, setInputValue] = useState(
         searchParams.get('search') || ''
     );
     const { t } = useTranslation();
 
+    useEffect(() => {
+        document.addEventListener('keydown', pressEnter);
+        return () => document.removeEventListener('keydown', pressEnter);
+    }, [inputValue]);
+
     function handleSearch() {
         if (inputValue.length) {
             searchParams.set('search', inputValue);
-            setSearchParams(searchParams);
         } else {
             searchParams.delete('search');
-            setSearchParams(searchParams);
+        }
+        setSearchParams(searchParams);
+    }
+
+    function pressEnter(e: KeyboardEvent) {
+        if (e.key === 'Enter') {
+            return handleSearch();
         }
     }
 
@@ -41,11 +44,11 @@ function ProjectsPage() {
             .includes(String(searchParams.get('search')).toLowerCase());
     }
 
-    function filterSearchByButton(x: string) {
-        return searchParams.has(x.toLowerCase());
+    function filterSearchByButton(projectProp: string) {
+        return searchParams.has(projectProp.toLowerCase());
     }
 
-    function selectBtn(btn: string) {
+    function applyFilter(btn: string) {
         searchParams.set(String([btn]), btn);
         setSearchParams(searchParams);
     }
@@ -86,7 +89,7 @@ function ProjectsPage() {
                             <div
                                 key={btn}
                                 className={styles['filter-btn']}
-                                onClick={() => selectBtn(btn)}
+                                onClick={() => applyFilter(btn)}
                             >
                                 {t(`description.${btn}`)}
                             </div>
