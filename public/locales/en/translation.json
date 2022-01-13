@@ -60,6 +60,7 @@
         "active": "active",
         "inactive": "inactive",
         "cancelled": "cancelled",
+        "logout": "logout",
         "addEmployee": "Add An Employee",
         "jobTitle": "Job Title",
         "selectJobTitle": "Select A Job Title"

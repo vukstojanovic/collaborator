@@ -60,6 +60,7 @@
         "active": "aktivan",
         "inactive": "neaktivan",
         "cancelled": "otkazan",
+        "logout": "izloguj se",
         "addEmployee": "Dodaj zaposlenog",
         "jobTitle": "Pozicija",
         "selectJobTitle": "Izaberi poziciju"

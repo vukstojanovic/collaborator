@@ -60,6 +60,7 @@
         "active": "Aktiv",
         "inactive": "Inaktiv",
         "cancelled": "Storniert",
+        "logout": "abmelden",
         "addEmployee": "Fügen Sie eine Angestellte hinzu",
         "jobTitle": "Berufsbezeichnung",
         "selectJobTitle": "Wählen Sie eine Berufsbezeichnung"
