@@ -117,7 +117,7 @@ function App() {
                     />
                     <Route path="/testmb" element={<TestMB />} />
                     <Route
-                        path="overview"
+                        path="/admin-overview"
                         element={
                             <PrivateRoute>
                                 <AdminOverview />
