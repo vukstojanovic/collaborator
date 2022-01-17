@@ -16,11 +16,13 @@ import ProtectedRoute from '@components/ProtectedRoute/ProtectedRoute';
 import Layout from '@components/Layout';
 import NotFoundPage from '@pages/NotFoundPage';
 import AdminOverview from '@pages/AdminOverview';
+import UserOverview from '@pages/UsersOverview/idex';
 import People from '@pages/People';
 import Profile from '@pages/Profile';
 import Projects from '@pages/Projects';
 import ErrorPage from '@pages/ErrorPage';
 import ErrorBoundary from '@components/ErrorBoundary';
+import ClientPage from '@components/ClientPage';
 
 function App() {
     return (
@@ -109,6 +111,14 @@ function App() {
                                 </ProtectedRoute>
                             }
                         />
+                        <Route
+                            path="/clients"
+                            element={
+                                <ProtectedRoute>
+                                    <ClientPage />
+                                </ProtectedRoute>
+                            }
+                        />
                         <Route path="/testsm" element={<TestSM />} />
                         <Route path="/testvs" element={<TestVS />} />
                         <Route path="/testbb" element={<TestBB />} />
@@ -121,11 +131,19 @@ function App() {
                         <Route path="/testmb" element={<TestMB />} />
                         <Route path="/error" element={<ErrorPage />} />
                         <Route
-                            path="overview"
+                            path="/admin-overview"
                             element={
                                 <PrivateRoute>
                                     <AdminOverview />
                                 </PrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="user-overview"
+                            element={
+                                <ProtectedRoute>
+                                    <UserOverview />
+                                </ProtectedRoute>
                             }
                         />
                         <Route path="*" element={<NotFoundPage />} />
