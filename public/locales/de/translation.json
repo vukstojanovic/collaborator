@@ -66,7 +66,9 @@
         "selectJobTitle": "Wählen Sie eine Berufsbezeichnung",
         "usa": "USA",
         "europe": "Europa",
-        "australia": "Australien"
+        "australia": "Australien",
+        "frontEndDeveloper": "front-end developer"
+        
     },
     "days": {
         "mon": "Montag",

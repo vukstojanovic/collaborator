@@ -66,7 +66,8 @@
         "selectJobTitle": "Izaberi poziciju",
         "usa": "SAD",
         "europe": "Evropa",
-        "australia": "Australija"
+        "australia": "Australija",
+        "frontEndDeveloper": "front-end developer"
     },
     "days": {
         "mon": "Ponedeljak",

@@ -66,7 +66,8 @@
         "selectJobTitle": "Select A Job Title",
         "usa": "USA",
         "europe": "Europe",
-        "australia": "Australia"
+        "australia": "Australia",
+        "frontEndDeveloper": "front-end developer"
     },
     "days": {
         "mon": "Monday",
