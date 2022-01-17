@@ -21,6 +21,7 @@ import Profile from '@pages/Profile';
 import Projects from '@pages/Projects';
 import ErrorPage from '@pages/ErrorPage';
 import ErrorBoundary from '@components/ErrorBoundary';
+import ClientPage from '@components/ClientPage';
 
 function App() {
     return (
@@ -106,6 +107,14 @@ function App() {
                             element={
                                 <ProtectedRoute>
                                     <Projects />
+                                </ProtectedRoute>
+                            }
+                        />
+                        <Route
+                            path="/clients"
+                            element={
+                                <ProtectedRoute>
+                                    <ClientPage />
                                 </ProtectedRoute>
                             }
                         />
