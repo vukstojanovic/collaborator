@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import About from '@pages/About';
 import TestBB from '@pages/TestBB';
 import TestSS from '@pages/TestSS';
@@ -13,7 +13,7 @@ import ProtectedRoute from '@components/ProtectedRoute/ProtectedRoute';
 import Layout from '@components/Layout';
 import NotFoundPage from '@pages/NotFoundPage';
 import AdminOverview from '@pages/AdminOverview';
-import UserOverview from '@pages/UsersOverview/idex';
+import UserOverview from '@pages/UsersOverview';
 import People from '@pages/People';
 import Profile from '@pages/Profile';
 import Projects from '@pages/Projects';
@@ -22,12 +22,19 @@ import ErrorBoundary from '@components/ErrorBoundary';
 import ClientPage from '@components/ClientPage';
 
 function App() {
+    const isAdmin = localStorage.getItem('admin');
     return (
         <ErrorBoundary>
             <BrowserRouter>
                 <Routes>
                     <Route path="/login" element={<LoginPage />} />
                     <Route element={<Layout />}>
+                        <Route
+                            path="/"
+                            element={
+                                isAdmin ? <AdminOverview /> : <UserOverview />
+                            }
+                        />
                         <Route element={<ProtectedRoute />}>
                             <Route
                                 path="user-overview"
