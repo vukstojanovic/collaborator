@@ -21,6 +21,7 @@ import Profile from '@pages/Profile';
 import Projects from '@pages/Projects';
 import ErrorPage from '@pages/ErrorPage';
 import ErrorBoundary from '@components/ErrorBoundary';
+import AddNewProject from '@components/modals/AddNewProject';
 
 function App() {
     return (
@@ -106,6 +107,7 @@ function App() {
                             element={
                                 <ProtectedRoute>
                                     <Projects />
+                                    <AddNewProject />
                                 </ProtectedRoute>
                             }
                         />
@@ -119,6 +121,7 @@ function App() {
                             element={<TimesheetDetails />}
                         />
                         <Route path="/testmb" element={<TestMB />} />
+
                         <Route path="/error" element={<ErrorPage />} />
                         <Route
                             path="overview"
