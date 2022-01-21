@@ -19,7 +19,6 @@ import Profile from '@pages/Profile';
 import Projects from '@pages/Projects';
 import ErrorPage from '@pages/ErrorPage';
 import ErrorBoundary from '@components/ErrorBoundary';
-import AddNewProject from '@components/modals/AddNewProject';
 import ClientPage from '@components/ClientPage';
 
 function App() {

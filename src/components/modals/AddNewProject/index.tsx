@@ -20,7 +20,6 @@ export interface optionsIF {
 }
 
 const AddNewProject = () => {
-    //const [state, setState] = useState<optionsIF[]>([]);
     const { t } = useTranslation();
 
     const selectClient: optionsIF = {
