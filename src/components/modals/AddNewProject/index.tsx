@@ -13,6 +13,9 @@ import { modalTypes } from '@reduxStore/actions/modalTypes';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@reduxStore/reducers';
 import { close } from '@reduxStore/actions/modal';
+import Modal from '@elements/Modal';
+import AddButton from '@elements/Buttons/AddButton';
+import DiscardButton from '@elements/Buttons/DiscardButton';
 
 export interface optionsIF {
     id: number;
@@ -71,8 +74,7 @@ const AddNewProject = () => {
 
     if (modal) {
         return ReactDom.createPortal(
-            <article className={styles.addNewProject}>
-                <h2 className={styles.mainH2}>{t('description.addPoject')}</h2>
+            <Modal title={t('description.addPoject')}>
                 <div className={styles.projectData}>
                     <label className={`${styles.label} ${styles.labelInput}`}>
                         {t('description.projectName')}:
@@ -141,21 +143,18 @@ const AddNewProject = () => {
                     <input className={styles.inputField} type="text" />
                 </div>
                 <div className={styles.modalButtons}>
-                    <button
+                    <AddButton onClick={() => console.log('Add')}>
+                        {t('description.add')}
+                    </AddButton>
+                    <DiscardButton
                         onClick={() =>
                             dispatch(close(modalTypes.addNewProject))
                         }
-                        className={`${styles.modal_discard} ${styles.modal_btn}`}
                     >
                         {t('description.discard')}
-                    </button>
-                    <button
-                        className={`${styles.modal_add} ${styles.modal_btn}`}
-                    >
-                        {t('description.add')}
-                    </button>
+                    </DiscardButton>
                 </div>
-            </article>,
+            </Modal>,
             document.getElementById('projectModal')!
         );
     } else {
