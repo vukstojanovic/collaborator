@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from '@reduxStore/store/store';
 import { Provider } from 'react-redux';
+import TutorialsContextProvider from './contexts/TutorialsContextProvider';
 import './theme.module.css';
 
 import '@localization/i18n';
@@ -12,9 +13,11 @@ import '@localization/i18n';
 ReactDOM.render(
     <React.StrictMode>
         <Suspense fallback={<div>Loading...</div>}>
-            <Provider store={store}>
-                <App />
-            </Provider>
+            <TutorialsContextProvider>
+                <Provider store={store}>
+                    <App />
+                </Provider>
+            </TutorialsContextProvider>
         </Suspense>
     </React.StrictMode>,
     document.getElementById('root')

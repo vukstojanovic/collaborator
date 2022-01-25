@@ -7,7 +7,7 @@ export function add(name: string) {
     };
 }
 
-export function erase(id: number) {
+export function erase(id: string) {
     return {
         type: actionTypes.ERASE_TUTORIAL,
         payload: id,
