@@ -7,6 +7,12 @@ import { useSearchParams } from 'react-router-dom';
 import { projectList } from './ProjectsPageData';
 import { useTranslation } from 'react-i18next';
 import { filterButtons } from '@constants/projects';
+import OpenModalButton from '@elements/Buttons/OpenModalButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { modalTypes } from '@reduxStore/actions/modalTypes';
+import { open } from '@reduxStore/actions/modal';
+import { RootState } from '@reduxStore/reducers';
+import AddNewProject from '../modals/AddNewProject';
 
 function ProjectsPage() {
     const [searchParams, setSearchParams] = useSearchParams({});
@@ -14,6 +20,10 @@ function ProjectsPage() {
         searchParams.get('search') || ''
     );
     const { t } = useTranslation();
+    const dispatch = useDispatch();
+    const modal = useSelector(
+        (state: RootState) => state.modal.type[modalTypes.addNewProject]
+    );
 
     useEffect(() => {
         document.addEventListener('keydown', pressEnter);
@@ -68,93 +78,106 @@ function ProjectsPage() {
     }
 
     return (
-        <section className={styles['projects-page']}>
-            <div className={styles['filter-area']}>
-                <h1>{t('description.projects')}</h1>
-                <div className={styles['input-container']}>
-                    <input
-                        type="text"
-                        value={inputValue}
-                        onChange={(e) => setInputValue(e.target.value)}
-                    />
-                    <FontAwesomeIcon
-                        className={styles['fa-search-icon']}
-                        icon={faSearch}
-                        onClick={handleSearch}
-                    />
-                </div>
-                <div className={styles['filter-btns']}>
-                    {filterButtons.map((btn) => {
-                        return (
-                            <div
-                                key={btn}
-                                className={styles['filter-btn']}
-                                onClick={() => applyFilter(btn)}
-                            >
-                                {t(`description.${btn}`)}
-                            </div>
-                        );
-                    })}
-                </div>
-                <div className={styles['adjusted-search']}>
-                    {filterButtons
-                        .filter((item) => searchParams.get(item))
-                        .map((btn) => {
+        <>
+            {modal && <AddNewProject />}
+            <section className={styles['projects-page']}>
+                <div className={styles['filter-area']}>
+                    <h1>{t('description.projects')}</h1>
+                    <div className={styles['input-container']}>
+                        <div className={styles['input-field']}>
+                            <input
+                                type="text"
+                                value={inputValue}
+                                onChange={(e) => setInputValue(e.target.value)}
+                            />
+                            <FontAwesomeIcon
+                                className={styles['fa-search-icon']}
+                                icon={faSearch}
+                                onClick={handleSearch}
+                            />
+                        </div>
+                        <OpenModalButton
+                            onClick={() =>
+                                dispatch(open(modalTypes.addNewProject))
+                            }
+                        />
+                    </div>
+                    <div className={styles['filter-btns']}>
+                        {filterButtons.map((btn) => {
                             return (
-                                <div key={btn} className={styles['adjust-btn']}>
-                                    {t(`description.${btn}`)}{' '}
-                                    <span onClick={() => unselectBtn(btn)}>
-                                        X
-                                    </span>
+                                <div
+                                    key={btn}
+                                    className={styles['filter-btn']}
+                                    onClick={() => applyFilter(btn)}
+                                >
+                                    {t(`description.${btn}`)}
+                                </div>
+                            );
+                        })}
+                    </div>
+                    <div className={styles['adjusted-search']}>
+                        {filterButtons
+                            .filter((item) => searchParams.get(item))
+                            .map((btn) => {
+                                return (
+                                    <div
+                                        key={btn}
+                                        className={styles['adjust-btn']}
+                                    >
+                                        {t(`description.${btn}`)}{' '}
+                                        <span onClick={() => unselectBtn(btn)}>
+                                            X
+                                        </span>
+                                    </div>
+                                );
+                            })}
+                    </div>
+                </div>
+                <div className={styles['projects']}>
+                    {projectList
+                        .filter((item) => {
+                            const {
+                                status,
+                                client,
+                                lead,
+                                manager,
+                                teamType,
+                                startDate,
+                                endDate,
+                            } = item;
+                            return (
+                                filterSearchByInput(status) ||
+                                filterSearchByInput(client) ||
+                                filterSearchByInput(lead) ||
+                                filterSearchByInput(manager) ||
+                                filterSearchByInput(teamType) ||
+                                filterSearchByInput(startDate) ||
+                                filterSearchByInput(endDate)
+                            );
+                        })
+                        .filter((item) => {
+                            const { status, teamType } = item;
+                            if (countButtonFilters() === 0) {
+                                return true;
+                            }
+                            return (
+                                filterSearchByButton(status) ||
+                                filterSearchByButton(teamType)
+                            );
+                        })
+                        .map((item) => {
+                            return (
+                                <div
+                                    className={styles['project-card-container']}
+                                    key={item.id}
+                                >
+                                    <ProjectCard {...item} />
                                 </div>
                             );
                         })}
                 </div>
-            </div>
-            <div className={styles['projects']}>
-                {projectList
-                    .filter((item) => {
-                        const {
-                            status,
-                            client,
-                            lead,
-                            manager,
-                            teamType,
-                            startDate,
-                            endDate,
-                        } = item;
-                        return (
-                            filterSearchByInput(status) ||
-                            filterSearchByInput(client) ||
-                            filterSearchByInput(lead) ||
-                            filterSearchByInput(manager) ||
-                            filterSearchByInput(teamType) ||
-                            filterSearchByInput(startDate) ||
-                            filterSearchByInput(endDate)
-                        );
-                    })
-                    .filter((item) => {
-                        const { status, teamType } = item;
-                        if (countButtonFilters() === 0) {
-                            return true;
-                        }
-                        return (
-                            filterSearchByButton(status) ||
-                            filterSearchByButton(teamType)
-                        );
-                    })
-                    .map((item) => {
-                        return (
-                            <div
-                                className={styles['project-card-container']}
-                                key={item.id}
-                            >
-                                <ProjectCard {...item} />
-                            </div>
-                        );
-                    })}
-            </div>
-        </section>
+            </section>
+        </>
     );
 }
 
