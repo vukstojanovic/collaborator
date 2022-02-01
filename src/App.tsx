@@ -20,13 +20,17 @@ import Projects from '@pages/Projects';
 import ErrorPage from '@pages/ErrorPage';
 import ErrorBoundary from '@components/ErrorBoundary';
 import ClientPage from '@components/ClientPage';
+import CustomRouter from './CustomRouter';
+import customHIstory from './CustomRouter/history';
+import SignUp from '@components/SignUp';
 
 function App() {
     const isAdmin = localStorage.getItem('admin');
     return (
         <ErrorBoundary>
-            <BrowserRouter>
+            <CustomRouter history={customHIstory}>
                 <Routes>
+                    <Route path="/signup" element={<SignUp />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route element={<Layout />}>
                         <Route
@@ -68,7 +72,7 @@ function App() {
                         <Route path="*" element={<NotFoundPage />} />
                     </Route>
                 </Routes>
-            </BrowserRouter>
+            </CustomRouter>
         </ErrorBoundary>
     );
 }
