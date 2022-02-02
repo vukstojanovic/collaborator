@@ -1,12 +1,11 @@
 import React, { FormEvent, useState } from 'react';
-import { useNavigate } from 'react-router';
-
 import styles from './Login.module.css';
 import { useTranslation } from 'react-i18next';
+import { NavLink } from 'react-router-dom';
+import login from '@api/loginService';
 
 export default function Login(): React.ReactElement {
     const { t } = useTranslation();
-    const navigate = useNavigate();
 
     const [details, setDetails] = useState<userDetails>({
         email: '',
@@ -16,25 +15,6 @@ export default function Login(): React.ReactElement {
         email: string;
         password: string;
     };
-
-    function login(details: userDetails): void {
-        if (details.email === 'user@user.com' && details.password === 'user') {
-            localStorage.setItem('isLogged', 'true');
-            localStorage.setItem('user', 'true');
-            navigate('/user-overview');
-        } else if (
-            details.email === 'admin@admin.com' &&
-            details.password === 'admin'
-        ) {
-            localStorage.setItem('isLogged', 'true');
-            localStorage.setItem('admin', 'true');
-            navigate('/admin-overview');
-        } else {
-            localStorage.setItem('isLogged', 'false');
-            localStorage.setItem('admin', 'false');
-            localStorage.setItem('user', 'false');
-        }
-    }
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -71,6 +51,7 @@ export default function Login(): React.ReactElement {
                 <button className={styles['submit']} type="submit">
                     Login
                 </button>
+                <NavLink to="/signup">SignUP</NavLink>
             </form>
         </div>
     );
