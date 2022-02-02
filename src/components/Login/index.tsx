@@ -3,23 +3,24 @@ import styles from './Login.module.css';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import login from '@api/loginService';
+import { loginType } from '@api/types';
+import { useApi } from '@hooks/useApi';
 
 export default function Login(): React.ReactElement {
     const { t } = useTranslation();
 
-    const [details, setDetails] = useState<userDetails>({
+    const [details, setDetails] = useState<loginType>({
         email: '',
         password: '',
     });
-    type userDetails = {
-        email: string;
-        password: string;
-    };
+
+    const postLogin = useApi(() => login(details));
+    console.log('postLogin: ' + JSON.stringify(postLogin));
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
-        login(details);
+        postLogin.request();
     }
 
     return (

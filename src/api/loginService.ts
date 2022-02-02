@@ -1,10 +1,6 @@
 import apiInstance from '@api/api';
 import history from '@components/CustomRouter/history';
-
-type loginType = {
-    email: string;
-    password: string;
-};
+import { loginType } from './types';
 
 const login = async ({ email, password }: loginType) => {
     let response;
@@ -17,6 +13,7 @@ const login = async ({ email, password }: loginType) => {
     } catch (error) {
         console.log(error);
     }
+    console.log(response?.status);
     if (response?.status === 200) {
         localStorage.setItem('accessToken', response.data.accessToken);
         localStorage.setItem('refreshToken', response.data.refreshToken);

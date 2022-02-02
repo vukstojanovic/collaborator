@@ -5,7 +5,7 @@ import TestSS from '@pages/TestSS';
 import TestVS from '@pages/TestVS';
 import TestSM from '@pages/TestSM';
 import TestMB from '@pages/TestMB';
-import LoginPage from '@pages/LoginPage';
+import LoginPage from '@pages/Loginpage';
 import Timesheet from '@pages/Timesheet';
 import TimesheetDetails from '@components/TimesheetDetails';
 import PrivateRoute from '@components/PrivateRoute/PrivateRoute';
