@@ -13,7 +13,7 @@ type Props = {
 const DropdownMenu: React.FC<Props> = ({ setOpenMenu }) => {
     const navigate = useNavigate();
     const { t } = useTranslation();
-
+    const isLogged = localStorage.getItem('refreshToken');
     const handleLogout = () => {
         logout();
     };
@@ -33,13 +33,15 @@ const DropdownMenu: React.FC<Props> = ({ setOpenMenu }) => {
                         />
                         {t('description.profile')}
                     </div>
-                    <div className={styles.logout} onClick={handleLogout}>
-                        <FontAwesomeIcon
-                            className={styles.icon}
-                            icon={faSignOutAlt}
-                        />
-                        {t('description.logout')}
-                    </div>
+                    {isLogged && (
+                        <div className={styles.logout} onClick={handleLogout}>
+                            <FontAwesomeIcon
+                                className={styles.icon}
+                                icon={faSignOutAlt}
+                            />
+                            {t('description.logout')}
+                        </div>
+                    )}
                 </div>
             </div>
         </section>
