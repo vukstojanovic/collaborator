@@ -24,7 +24,8 @@
             "@reduxStore/*": ["./src/reduxStore/*"],
             "@utils/*": ["./src/utils/*"],
             "@constants/*": ["./src/constants/*"],
-            "@elements/*": ["./src/elements/*"]
+            "@elements/*": ["./src/elements/*"],
+            "@api/*": ["./src/api/*"]
         }
     },
     "include": ["src", "actions"],

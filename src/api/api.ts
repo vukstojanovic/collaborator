@@ -1,5 +1,5 @@
 import axios from 'axios';
-import history from '../CustomRouter/history';
+import history from '@components/CustomRouter/history';
 
 let token = localStorage.getItem('accessToken');
 const baseUrl = process.env.REACT_APP_API_URL;
@@ -32,14 +32,13 @@ apiInstance.interceptors.response.use(
     async function (error) {
         const originalRequest = error.config;
         if (
-            error.respnse.status === 401 &&
-            originalRequest.url ===
-                `${process.env.REACT_APP_API_URL}/auth/token`
+            error.response.status === 401 &&
+            originalRequest.url === `${baseUrl}/auth/token`
         ) {
             history.replace('/login');
             return Promise.reject(error);
         }
-        if (error.respnse.status === 401 && !originalRequest._retry) {
+        if (error.response.status === 401 && !originalRequest._retry) {
             originalRequest._retry = true;
             const refreshToken = localStorage.getItem('refreshToken');
             const res = await axios.post('/auth/token', {

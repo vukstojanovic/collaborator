@@ -1,5 +1,5 @@
-import apiInstance from './api';
-import history from '../CustomRouter/history';
+import apiInstance from '@api/api';
+import history from '@components/CustomRouter/history';
 
 const logout = async () => {
     try {
@@ -15,6 +15,7 @@ const logout = async () => {
     }
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
+    localStorage.removeItem('isAdmin');
     history.replace('/login');
 };
 

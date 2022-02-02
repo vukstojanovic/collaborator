@@ -1,5 +1,5 @@
-import apiInstance from './api';
-import history from '../CustomRouter/history';
+import apiInstance from '@api/api';
+import history from '@components/CustomRouter/history';
 
 type loginType = {
     email: string;
@@ -13,16 +13,22 @@ const login = async ({ email, password }: loginType) => {
             email: email,
             password: password,
         });
-
         console.log(response.data);
-        return response;
     } catch (error) {
         console.log(error);
     }
     if (response?.status === 200) {
         localStorage.setItem('accessToken', response.data.accessToken);
         localStorage.setItem('refreshToken', response.data.refreshToken);
-        history.replace('/');
+        localStorage.setItem('isAdmin', response.data.role);
+        const role = localStorage.getItem('isAdmin');
+
+        if (role == 'admin') {
+            history.replace('/admin-overview');
+        }
+        if (role == 'user') {
+            history.replace('/user-overview');
+        }
     } else {
         history.replace('/signup');
     }

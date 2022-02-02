@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import About from '@pages/About';
 import TestBB from '@pages/TestBB';
 import TestSS from '@pages/TestSS';
@@ -20,12 +20,12 @@ import Projects from '@pages/Projects';
 import ErrorPage from '@pages/ErrorPage';
 import ErrorBoundary from '@components/ErrorBoundary';
 import ClientPage from '@components/ClientPage';
-import CustomRouter from './CustomRouter';
-import customHIstory from './CustomRouter/history';
+import CustomRouter from '@components/CustomRouter';
+import customHIstory from '@components/CustomRouter/history';
 import SignUp from '@components/SignUp';
 
 function App() {
-    const isAdmin = localStorage.getItem('admin');
+    const isAdmin = localStorage.getItem('isAdmin') == 'admin';
     return (
         <ErrorBoundary>
             <CustomRouter history={customHIstory}>

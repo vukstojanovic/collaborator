@@ -1,10 +1,10 @@
 import { Navigate, Outlet } from 'react-router-dom';
 
 function PrivateRoute() {
-    const admin = localStorage.getItem('admin');
-    const isLoggedIn = localStorage.getItem('isLogged');
+    const isAdmin = localStorage.getItem('isAdmin') == 'admin';
+    const isLoggedIn = localStorage.getItem('refreshToken');
 
-    return admin && isLoggedIn ? <Outlet /> : <Navigate to="/login" />;
+    return isAdmin && isLoggedIn ? <Outlet /> : <Navigate to="/login" />;
 }
 
 export default PrivateRoute;

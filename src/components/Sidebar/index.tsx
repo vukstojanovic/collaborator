@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
     const { t } = useTranslation();
-    const isAdminLogged = JSON.parse(localStorage.getItem('admin') || 'false');
+    const isAdmin = localStorage.getItem('isAdmin') == 'admin';
 
     function displaySidebarField(
         roleName: string,
@@ -45,7 +45,7 @@ const Sidebar = () => {
                             className={(navData) =>
                                 displaySidebarField(
                                     role,
-                                    isAdminLogged,
+                                    isAdmin,
                                     styleName,
                                     navData
                                 )

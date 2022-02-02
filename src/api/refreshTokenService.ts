@@ -1,9 +1,5 @@
-import apiInstance from './api';
-import history from '../CustomRouter/history';
-// type tokenType = {
-//     accessToken:string,
-//     refreshToken:string
-// }
+import apiInstance from '@api/api';
+import history from '@components/CustomRouter/history';
 
 const getRefreshToken = async () => {
     let response;

@@ -1,5 +1,5 @@
-import apiInstance from './api';
-import history from '../CustomRouter/history';
+import apiInstance from '@api/api';
+import history from '@components/CustomRouter/history';
 
 type signupType = {
     email: string;

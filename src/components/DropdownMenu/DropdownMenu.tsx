@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faIdCard, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import logout from '../../api/logoutService';
+import logout from '@api/logoutService';
 
 type Props = {
     setOpenMenu: (openMenu: boolean) => void;
