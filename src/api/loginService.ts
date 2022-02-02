@@ -20,8 +20,8 @@ const login = async ({ email, password }: loginType) => {
     if (response?.status === 200) {
         localStorage.setItem('accessToken', response.data.accessToken);
         localStorage.setItem('refreshToken', response.data.refreshToken);
-        localStorage.setItem('isAdmin', response.data.role);
-        const role = localStorage.getItem('isAdmin');
+        localStorage.setItem('role', response.data.role);
+        const role = localStorage.getItem('role');
 
         if (role == 'admin') {
             history.replace('/admin-overview');

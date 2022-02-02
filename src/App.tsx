@@ -25,7 +25,7 @@ import customHIstory from '@components/CustomRouter/history';
 import SignUp from '@components/SignUp';
 
 function App() {
-    const isAdmin = localStorage.getItem('isAdmin') == 'admin';
+    const isAdmin = localStorage.getItem('role') == 'admin';
     return (
         <ErrorBoundary>
             <CustomRouter history={customHIstory}>

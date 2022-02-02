@@ -15,7 +15,7 @@ const logout = async () => {
     }
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
-    localStorage.removeItem('isAdmin');
+    localStorage.removeItem('role');
     history.replace('/login');
 };
 
