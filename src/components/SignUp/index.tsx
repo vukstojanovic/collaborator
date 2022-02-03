@@ -1,9 +1,16 @@
 import { useState } from 'react';
 import signUp from '@api/signupService';
+import { useApi } from '@hooks/useApi';
 
 const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const postSignUpApi = useApi(signUp);
+
+    const handleSignupOnClick = () => {
+        postSignUpApi.request({ email, password });
+    };
+
     return (
         <div>
             <input
@@ -16,7 +23,7 @@ const SignUp = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="password"
             />
-            <button onClick={() => signUp({ email, password })}>Sign up</button>
+            <button onClick={handleSignupOnClick}>Sign up</button>
         </div>
     );
 };
