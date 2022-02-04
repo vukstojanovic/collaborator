@@ -17,12 +17,17 @@
 }
 
 .input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.input-field {
     padding: 3px;
     border-bottom: 2px solid var(--border-color);
     margin-bottom: 27px;
     width: 320px;
 }
-
 .fa-search-icon {
     font-size: 20px;
     margin-left: 5px;

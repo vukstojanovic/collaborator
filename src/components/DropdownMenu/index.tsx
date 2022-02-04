@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faIdCard, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import logout from '@api/logoutService';
+import { useApi } from '@hooks/useApi';
 
 type Props = {
     setOpenMenu: (openMenu: boolean) => void;
@@ -12,11 +14,11 @@ type Props = {
 const DropdownMenu: React.FC<Props> = ({ setOpenMenu }) => {
     const navigate = useNavigate();
     const { t } = useTranslation();
+    const logoutDeleteApi = useApi(logout);
+    const isLogged = localStorage.getItem('refreshToken');
 
-    const logout = () => {
-        localStorage.removeItem('isLogged');
-        localStorage.removeItem('admin');
-        navigate('/login');
+    const handleLogout = () => {
+        logoutDeleteApi.request();
     };
 
     const profile = () => {
@@ -34,13 +36,15 @@ const DropdownMenu: React.FC<Props> = ({ setOpenMenu }) => {
                         />
                         {t('description.profile')}
                     </div>
-                    <div className={styles.logout} onClick={logout}>
-                        <FontAwesomeIcon
-                            className={styles.icon}
-                            icon={faSignOutAlt}
-                        />
-                        {t('description.logout')}
-                    </div>
+                    {isLogged && (
+                        <div className={styles.logout} onClick={handleLogout}>
+                            <FontAwesomeIcon
+                                className={styles.icon}
+                                icon={faSignOutAlt}
+                            />
+                            {t('description.logout')}
+                        </div>
+                    )}
                 </div>
             </div>
         </section>

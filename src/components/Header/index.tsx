@@ -4,14 +4,19 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import styles from './header.module.css';
 import { useNavigate } from 'react-router-dom';
 import Local from '@components/Local';
-import DropdownMenu from '@components/DropdownMenu/DropdownMenu';
+import DropdownMenu from '@components/DropdownMenu';
 
 const Header: React.FC = () => {
     const [openMenu, setOpenMenu] = useState(false);
+    const isAdmin = localStorage.getItem('role');
 
     const navigate = useNavigate();
     function handleHomeNavigateClick() {
-        navigate('/');
+        if (isAdmin == 'admin') {
+            navigate('/admin-overview');
+        } else {
+            navigate('/user-overview');
+        }
     }
 
     return (
@@ -25,9 +30,7 @@ const Header: React.FC = () => {
             <Local />
             <div className={styles.headerRight}>
                 <div className={styles.circleDiv}>
-                    {openMenu ? (
-                        <DropdownMenu setOpenMenu={setOpenMenu} />
-                    ) : null}
+                    {openMenu && <DropdownMenu setOpenMenu={setOpenMenu} />}
                 </div>
                 <FontAwesomeIcon
                     className={openMenu ? styles.open : styles.faCaretDown}

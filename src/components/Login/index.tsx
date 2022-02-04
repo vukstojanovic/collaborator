@@ -1,45 +1,23 @@
-import React, { FormEvent, useState } from 'react';
-import { useNavigate } from 'react-router';
-
+import React, { FormEvent, useEffect, useState } from 'react';
 import styles from './Login.module.css';
 import { useTranslation } from 'react-i18next';
+import { NavLink } from 'react-router-dom';
+import login from '@api/loginService';
+import { userCredentialsType } from '@api/types';
+import { useApi } from '@hooks/useApi';
 
 export default function Login(): React.ReactElement {
     const { t } = useTranslation();
-    const navigate = useNavigate();
-
-    const [details, setDetails] = useState<userDetails>({
+    const [details, setDetails] = useState<userCredentialsType>({
         email: '',
         password: '',
     });
-    type userDetails = {
-        email: string;
-        password: string;
-    };
 
-    function login(details: userDetails): void {
-        if (details.email === 'user@user.com' && details.password === 'user') {
-            console.log('logged in');
-            localStorage.setItem('isLogged', 'true');
-            navigate('/');
-        } else if (
-            details.email === 'admin@admin.com' &&
-            details.password === 'admin'
-        ) {
-            console.log('logged in');
-            localStorage.setItem('isLogged', 'true');
-            localStorage.setItem('admin', 'true');
-            navigate('/');
-        } else {
-            localStorage.setItem('isLogged', 'false');
-            localStorage.setItem('admin', 'false');
-        }
-    }
+    const postLogin = useApi(login);
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
-
-        login(details);
+        postLogin.request(details);
     }
 
     return (
@@ -71,6 +49,7 @@ export default function Login(): React.ReactElement {
                 <button className={styles['submit']} type="submit">
                     Login
                 </button>
+                <NavLink to="/signup">SignUP</NavLink>
             </form>
         </div>
     );
