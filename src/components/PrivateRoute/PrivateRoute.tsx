@@ -1,13 +1,10 @@
-import React, { PropsWithChildren } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 
-function PrivateRoute({ children }: PropsWithChildren<unknown>) {
-    const admin = localStorage.getItem('admin');
-    return (
-        <React.Fragment>
-            {admin ? children : <Navigate to="/login" />}
-        </React.Fragment>
-    );
+function PrivateRoute() {
+    const isAdmin = localStorage.getItem('role') == 'admin';
+    const isLoggedIn = localStorage.getItem('refreshToken');
+
+    return isAdmin && isLoggedIn ? <Outlet /> : <Navigate to="/login" />;
 }
 
 export default PrivateRoute;
