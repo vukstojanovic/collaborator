@@ -13,6 +13,7 @@ import { modalTypes } from '@reduxStore/actions/modalTypes';
 import { open } from '@reduxStore/actions/modal';
 import { RootState } from '@reduxStore/reducers';
 import AddNewProject from '../modals/AddNewProject';
+import axios from 'axios';
 
 function ProjectsPage() {
     const [searchParams, setSearchParams] = useSearchParams({});
@@ -24,6 +25,23 @@ function ProjectsPage() {
     const modal = useSelector(
         (state: RootState) => state.modal.type[modalTypes.addNewProject]
     );
+    const [fetchProjectList, setFetchProjectList] = useState([]);
+
+    useEffect(() => {
+        const accessToken = localStorage.getItem('accessToken');
+        const refreshToken = localStorage.getItem('refreshToken');
+        axios.get('http://localhost:8080/api/v1/projects', {
+            headers: {
+                authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json',
+            },
+        });
+        // .then((res: any) => console.log(res))
+        // .catch((err) =>
+        //     axios.get('http://localhost:8080/api/v1/projects', {headers: {authorization: `Bearer ${refreshToken}`,'Content-Type': 'application/json'}})
+        //     .then(res => )
+        // );
+    }, []);
 
     useEffect(() => {
         document.addEventListener('keydown', pressEnter);
