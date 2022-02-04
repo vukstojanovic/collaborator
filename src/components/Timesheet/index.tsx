@@ -82,9 +82,9 @@ const Timesheet = () => {
                                             navigate(
                                                 '/timesheet/' +
                                                     day.date +
-                                                    '/' +
+                                                    '-' +
                                                     (Number(day.month) + 1) +
-                                                    '/' +
+                                                    '-' +
                                                     calendar.year
                                             )
                                         }

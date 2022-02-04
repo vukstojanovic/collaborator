@@ -7,6 +7,7 @@ import { useSearchParams } from 'react-router-dom';
 import { projectList } from './ProjectsPageData';
 import { useTranslation } from 'react-i18next';
 import { filterButtons } from '@constants/projects';
+import axios from 'axios';
 
 function ProjectsPage() {
     const [searchParams, setSearchParams] = useSearchParams({});
@@ -14,6 +15,14 @@ function ProjectsPage() {
         searchParams.get('search') || ''
     );
     const { t } = useTranslation();
+    const allProjects = useState([]);
+
+    useEffect(() => {
+        axios
+            .get('http://localhost:8080/api/v1/projects')
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err));
+    }, []);
 
     useEffect(() => {
         document.addEventListener('keydown', pressEnter);

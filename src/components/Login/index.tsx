@@ -1,5 +1,6 @@
 import React, { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router';
+import axios from 'axios';
 
 import styles from './Login.module.css';
 import { useTranslation } from 'react-i18next';
@@ -17,7 +18,32 @@ export default function Login(): React.ReactElement {
         password: string;
     };
 
+    function signUp() {
+        try {
+            axios
+                .post('http://localhost:8080/api/v1/auth/signup', details)
+                .then((res) => console.log(res))
+                .catch((err) => console.log('post err' + err));
+        } catch (err) {
+            console.log('axios signup request failed.');
+        }
+    }
+
     function login(details: userDetails): void {
+        try {
+            axios
+                .post('http://localhost:8080/api/v1/auth/login', details)
+                .then((res) => {
+                    console.log(res);
+                    const { accessToken, refreshToken } = res.data;
+                    localStorage.setItem('accessToken', accessToken);
+                    localStorage.setItem('refreshToken', refreshToken);
+                })
+                .catch((err) => console.log('post err' + err));
+        } catch (err) {
+            console.log('axios login request failed.');
+        }
+
         if (details.email === 'user@user.com' && details.password === 'user') {
             console.log('logged in');
             localStorage.setItem('isLogged', 'true');
@@ -72,6 +98,7 @@ export default function Login(): React.ReactElement {
                     Login
                 </button>
             </form>
+            <button onClick={signUp}>Signup</button>
         </div>
     );
 }
