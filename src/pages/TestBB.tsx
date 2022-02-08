@@ -5,6 +5,7 @@ function TestBB() {
     return (
         <div style={{ height: '100vh' }}>
             <ProjectCard
+                id={3}
                 status={ProjectStatus.inactive}
                 client={'Colaborator'}
                 lead={'Kim Novak'}
@@ -12,6 +13,7 @@ function TestBB() {
                 teamType={'Frontend'}
                 startDate={'01-01-2021'}
                 endDate={'N/A'}
+                projectName={'Some Project'}
             />
         </div>
     );
