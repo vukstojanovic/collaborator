@@ -4,7 +4,6 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import styles from './ProjectsPage.module.css';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { projectList } from './ProjectsPageData';
 import { useTranslation } from 'react-i18next';
 import { filterButtons } from '@constants/projects';
 import OpenModalButton from '@elements/Buttons/OpenModalButton';
@@ -13,6 +12,7 @@ import { modalTypes } from '@reduxStore/actions/modalTypes';
 import { open } from '@reduxStore/actions/modal';
 import { RootState } from '@reduxStore/reducers';
 import AddNewProject from '../modals/AddNewProject';
+import apiInstance from '@api/api';
 
 function ProjectsPage() {
     const [searchParams, setSearchParams] = useSearchParams({});
@@ -24,6 +24,19 @@ function ProjectsPage() {
     const modal = useSelector(
         (state: RootState) => state.modal.type[modalTypes.addNewProject]
     );
+    const [fetchedProjectList, setFetchedProjectList] = useState([]);
+
+    useEffect(() => {
+        apiInstance
+            .get(`/projects`)
+            .then((response) => {
+                console.log(response.data);
+                setFetchedProjectList(response.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
 
     useEffect(() => {
         document.addEventListener('keydown', pressEnter);
@@ -45,13 +58,15 @@ function ProjectsPage() {
         }
     }
 
-    function filterSearchByInput(x: string) {
+    function filterSearchByInput(cardText: string | undefined | null) {
         if (!searchParams.get('search')) {
             return true;
         }
-        return x
-            .toLowerCase()
-            .includes(String(searchParams.get('search')).toLowerCase());
+        if (cardText) {
+            return cardText
+                .toLowerCase()
+                .includes(String(searchParams.get('search')).toLowerCase());
+        }
     }
 
     function filterSearchByButton(projectProp: string) {
@@ -134,7 +149,7 @@ function ProjectsPage() {
                     </div>
                 </div>
                 <div className={styles['projects']}>
-                    {projectList
+                    {fetchedProjectList
                         .filter((item) => {
                             const {
                                 status,
@@ -165,7 +180,7 @@ function ProjectsPage() {
                                 filterSearchByButton(teamType)
                             );
                         })
-                        .map((item) => {
+                        .map((item: any) => {
                             return (
                                 <div
                                     className={styles['project-card-container']}
